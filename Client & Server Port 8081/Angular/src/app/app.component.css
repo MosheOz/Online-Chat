@@ -1,0 +1,28 @@
+section{
+    height:100vh;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 15fr 1fr;
+    /* grid-gap: 10px; */
+}
+
+header {
+    grid-row: 1 / 2;
+}
+
+h2 {
+    text-align: center;
+}
+
+main {
+    grid-row: 2 / 3;
+}
+
+footer {
+    grid-row: 3 / -1;
+}
+
+h5 {
+    text-align: center;
+}
