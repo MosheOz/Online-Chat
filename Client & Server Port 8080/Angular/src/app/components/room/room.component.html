@@ -1,0 +1,55 @@
+<div class="main">
+
+    <!-- aside section, desplay the users online withe green color, and users logged out with red color -->
+    <div class="usersArea" #userArea>
+        <h4 style="text-align: center;">Tap on one of the users to start a conversation</h4>
+        <div class="users" *ngFor="let u of users" (click)="startConvs(u?.userName)">
+            <div class="userName">
+                <p>userName: {{u.userName}}</p>
+            </div>
+            <div class="isLogin" *ngIf="u.login === true"></div>
+            <div class="isNotLogin" *ngIf="u.login === false"></div>
+        </div>
+    </div>
+
+    <div class="convsArea" #convsArea>
+
+        <!-- message on page loading -->
+        <div *ngIf="!messages">Tap on one of the users to start a conversation </div>
+
+        <!-- the conversation section -->
+        <div class="convsAreaSection-main" *ngIf="messages">
+            <div class="convsAreaSectionA">
+                <p style="text-align: center; font-weight: bolder;"> Your conversation</p>
+
+                <div class="showMessages" *ngFor="let m of messages">
+                    <div class="senderName">
+                        <b>From:</b> {{m.sender.userName}}
+                        <b> To:</b> {{m.receiver.userName}}</div>
+                    <div class="messageBody">
+                        <p>{{m.messageBody}}</p>
+                        <p style="text-align: center;">{{m.date | date: 'short'}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- the form typing messages section -->
+            <div class="convsAreaSectionB">
+                <div class="writeMessage">
+                    <p style="text-align: center; font-weight: bolder;">Type Here Your Message</p>
+                    <form>
+                        <div>
+                            <label>Message</label>
+                            <textarea cols="30" rows="10" class="form-control" placeholder="Type Here Your Message" name="messageBody" [(ngModel)]="message.messageBody"></textarea>
+                        </div>
+                        <br>
+                        <div>
+                            <button class="btn btn-primary btn-block" (click)="sendMsg()">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

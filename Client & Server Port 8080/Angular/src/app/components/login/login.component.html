@@ -1,0 +1,27 @@
+<div class="main">
+    <form>
+        <div *ngIf="loginFailed === true">
+            user name or password not correct
+        </div>
+        <div *ngIf="alreadyLogged === true">
+            Hey.. You're already logged in..
+        </div>
+        <div class="line">
+            <div class="form-group">
+                <label for="email">User Name</label>
+                <input type="text" name="email" [(ngModel)]="credentials.userName" placeholder="Type Your User Name Here" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" [(ngModel)]="credentials.password" placeholder="Type Your Password Here" class="form-control">
+            </div>
+        </div>
+
+        <div class="line">
+            <div class="form-group">
+                <button class="btn btn-primary" (click)="login()">Login</button>
+            </div>
+        </div>
+    </form>
+</div>
